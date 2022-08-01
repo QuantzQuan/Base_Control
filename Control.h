@@ -32,7 +32,7 @@ void Serial_Get(int Servo_Pin)
 			{
 				Motor(i);
 				Bump(i);
-				Curl(i);
+				Crul(i);
 				Light(i);
 			}
 		}
@@ -52,7 +52,7 @@ void Motor(int i)
 			digitalWrite(11, HIGH);
 			digitalWrite(12, HIGH);
 			digitalWrite(13, HIGH);
-			Serial.println("����ر�");
+			Serial.println("Stop Move");
 		}
 		else if (recData[i + 5] == '1'&&recData[i + 6] == '0')
 		{
@@ -60,7 +60,7 @@ void Motor(int i)
 			digitalWrite(11, LOW);
 			digitalWrite(12, LOW);
 			digitalWrite(13, HIGH);
-			Serial.println("��ת");
+			Serial.println("Go Left");
 			delay(500);
 		}
 		else if (recData[i + 5] == '0'&&recData[i + 6] == '1')
@@ -69,7 +69,7 @@ void Motor(int i)
 			digitalWrite(11, HIGH);
 			digitalWrite(12, HIGH);
 			digitalWrite(13, LOW);
-			Serial.println("��ת");
+			Serial.println("Go Right");
 			delay(500);
 		}
 		else if (recData[i + 5] == '1'&&recData[i + 6] == '1')
@@ -78,7 +78,7 @@ void Motor(int i)
 			digitalWrite(11, HIGH);
 			digitalWrite(12, LOW);
 			digitalWrite(13, HIGH);
-			Serial.println("ǰ��");
+			Serial.println("Go Forward");
 			delay(500);
 		}
 		else if (recData[i + 5] == '0'&&recData[i + 6] == '0')
@@ -87,7 +87,7 @@ void Motor(int i)
 			digitalWrite(11, LOW);
 			digitalWrite(12, HIGH);
 			digitalWrite(13, LOW);
-			Serial.println("����");
+			Serial.println("Go Back");
 			delay(500);
 		}
 		else return;
@@ -107,62 +107,62 @@ void Bump(int i)
 			digitalWrite(6, HIGH);
 			delay(200);
 			digitalWrite(4, HIGH);
-			Serial.println("ˮ��1��ˮ");
+			Serial.println("Fill Tank 1");
 			delay(1000);
 			digitalWrite(4, LOW);
 			digitalWrite(6, LOW);
 			digitalWrite(7, LOW);
 			digitalWrite(8, LOW);
 			digitalWrite(9, LOW);
-			Serial.println("ˮ��1��ˮ����");
+			Serial.println("Stop Fill Tank 1");
 		}
 		else if (recData[i + 5] == '0'&&recData[i + 6] == '1')
 		{
 			digitalWrite(7, HIGH);
 			delay(200);
 			digitalWrite(4, HIGH);
-			Serial.println("ˮ��2��ˮ");
+			Serial.println("Fill Tank 2");
 			delay(1000);
 			digitalWrite(4, LOW);
 			digitalWrite(6, LOW);
 			digitalWrite(7, LOW);
 			digitalWrite(8, LOW);
 			digitalWrite(9, LOW);
-			Serial.println("ˮ��2��ˮ����");
+			Serial.println("Stop Fill Tank 2");
 		}
 		else if (recData[i + 5] == '1'&&recData[i + 6] == '0')
 		{
 			digitalWrite(8, HIGH);
 			delay(200);
 			digitalWrite(4, HIGH);
-			Serial.println("ˮ��3��ˮ");
+			Serial.println("Fill Tank 3");
 			delay(1000);
 			digitalWrite(4, LOW);
 			digitalWrite(6, LOW);
 			digitalWrite(7, LOW);
 			digitalWrite(8, LOW);
 			digitalWrite(9, LOW);
-			Serial.println("ˮ��3��ˮ����");
+			Serial.println("Stop Fill Tank 3");
 		}
 		else if (recData[i + 5] == '1'&&recData[i + 6] == '1')
 		{
 			digitalWrite(9, HIGH);
 			delay(200);
 			digitalWrite(4, HIGH);
-			Serial.println("ˮ��4��ˮ");
+			Serial.println("Fill Tank 4");
 			delay(1000);
 			digitalWrite(4, LOW);
 			digitalWrite(6, LOW);
 			digitalWrite(7, LOW);
 			digitalWrite(8, LOW);
 			digitalWrite(9, LOW);
-			Serial.println("ˮ��4��ˮ����");
+			Serial.println("Stop Fill Tank 4");
 		}
 		else return;
 	}
 }
 
-void Curl(int i)
+void Crul(int i)
 {
 	if (recData[i + 1] == 'C'&&recData[i + 2] == 'R'&&recData[i + 3] == 'U'&&recData[i + 4] == 'L')
 	{
@@ -170,7 +170,7 @@ void Curl(int i)
 		if (recData[i + 5] == '0')
 		{
 			myservo.write(150);              // ����Ƕ�д��
-			Serial.println("��ת");
+			Serial.println("CW");
 			Serial.println(tim);
 			delay(tim * 1000);
 			myservo.write(90);
@@ -178,7 +178,7 @@ void Curl(int i)
 		else if (recData[i + 5] == '1')
 		{
 			myservo.write(30);              // ����Ƕ�д��
-			Serial.println("��ת");
+			Serial.println("CCW");
 			Serial.println(tim);
 			delay(tim * 1000);
 			myservo.write(90);
@@ -194,12 +194,12 @@ void Light(int i)
 		if (recData[i + 5] == '0'&&recData[i + 6] == '0')
 		{
 			digitalWrite(3, LOW);
-			Serial.println("̽�չر�");
+			Serial.println("Light ON");
 		}
 		else  if (recData[i + 5] == '1'&&recData[i + 6] == '1')
 		{
 			digitalWrite(3, HIGH);
-			Serial.println("̽�տ���");
+			Serial.println("Light OFF");
 		}
 		else return;
 	}
