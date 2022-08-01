@@ -2,7 +2,7 @@
 
 void Motor(int i);
 void Bump(int i);
-void Curl(int i);
+void Crul(int i);
 void Light(int i);
 
 String recData = "";  //recording received data from upper machine
@@ -169,7 +169,7 @@ void Crul(int i)
 		int tim = int(recData[6]) - 48;
 		if (recData[i + 5] == '0')
 		{
-			myservo.write(150);              // ����Ƕ�д��
+			myservo.write(150);              
 			Serial.println("CW");
 			Serial.println(tim);
 			delay(tim * 1000);
@@ -177,7 +177,7 @@ void Crul(int i)
 		}
 		else if (recData[i + 5] == '1')
 		{
-			myservo.write(30);              // ����Ƕ�д��
+			myservo.write(30);              
 			Serial.println("CCW");
 			Serial.println(tim);
 			delay(tim * 1000);
